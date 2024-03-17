@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+
+:root {
+  --branco: #fff;
+  --roxo: #8800b9;
+  --roxo-gradiente: linear-gradient(to right, #800080, #9b30ff, #4b0082);
+  --vermelho-gradiente: linear-gradient(to right, #ff0000, #ff4400, #ff0000);
+  --verde-gradiente: linear-gradient(to right, #006400, #32cd32, #006400);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "JetBrains", sans-serif;
+}
+
+body {
+  background-image: url(../img/Design\ sem\ nome.png);
+  color: var(--roxo);
+}
+
+.caixa-texto {
+  margin: 100px auto;
+  padding: 30px;
+  max-width: 640px;
+  background: var(--branco);
+  border: none;
+  border-radius: 20px;
+}
+
+.texto {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 19px;
+}
+
+#resultado {
+  display: flex;
+  justify-content: center;
+}
+
+.cpfValido,
+.cpfInvalido {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  align-items: center;
+  padding: 0 6px;
+  width: auto;
+  height: 30px;
+  background: var(--verde-gradiente);
+  border-radius: 10px;
+  font-size: 12px;
+  color: var(--branco);
+}
+
+.cpfInvalido {
+  background: var(--vermelho-gradiente);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+input {
+  align-self: center;
+  height: 30px;
+  text-align: center;
+  border: 2.2px solid var(--roxo);
+  border-radius: 10px;
+  outline: none;
+}
+
+button {
+  align-self: center;
+  padding: 10px 30px;
+  color: var(--branco);
+  background: var(--roxo-gradiente);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+}
