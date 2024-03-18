@@ -1,21 +1,43 @@
-const form = document.querySelector("form");
+const input = document.querySelector(".input-Text");
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
-  const inputCpf = e.target.querySelector("#cpf");
+document.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    const btn = document.querySelector(".button");
+    btn.click();
+  }
+});
+
+function receberValor() {
+  const inputCpf = document.querySelector(".input-display");
   const cpf = inputCpf.value.replace(/\D+/g, ""); // vai add em cpf somente numeros
   cpfArray = Array.from(cpf);
   let somaDosNumeros = 0;
   let primeiroDigito;
   let segundoDigito;
 
-  const limpar = new LimparDisplay();
-  limpar.inicia();
+  if (verificarInput(inputCpf.value)) {
+    verificarPrimeiroDigito(cpfArray);
+    verificarSegundoDigito(cpfArray);
+    setValidacao(primeiroDigito, segundoDigito);
+  } else {
+    let msgError;
+    if (inputCpf.length !== 11) {
+      msgError = "Digite os 11 numeros do cpf";
+    }
+    formatoErrado(msgError);
+  }
 
-  verificarPrimeiroDigito(cpfArray);
-  verificarSegundoDigito(cpfArray);
+  LimparDisplay();
 
-  setValidacao(primeiroDigito, segundoDigito);
+  function verificarInput(inputCpf) {
+    if (!isNaN(inputCpf)) {
+      if (inputCpf.length === 11) {
+        return true;
+      }
+    } else {
+      return false;
+    }
+  }
 
   function verificarPrimeiroDigito(cpfArray) {
     for (let i in cpfArray) {
@@ -41,25 +63,6 @@ form.addEventListener("submit", function (e) {
     return segundoDigito;
   }
 
-  function LimparDisplay() {
-    this.display = document.querySelector(".display");
-
-    this.inicia = () => {
-      this.capturaCliques();
-    };
-
-    this.capturaCliques = () => {
-      document.addEventListener("click", (e) => {
-        const el = e.target;
-
-        if (el.classList.contains("button")) this.clear();
-        return;
-      });
-    };
-
-    this.clear = () => (this.display.value = "");
-  }
-
   function criarTag() {
     const p = document.createElement("p");
     return p;
@@ -75,13 +78,31 @@ form.addEventListener("submit", function (e) {
     if (cpfArray[9] === primeiroDigito && cpfArray[10] === segundoDigito) {
       msg = `CPF ${cpf} VÁLIDO`;
       p.classList.add("cpfValido");
-      console.log("CPF " + cpf + " VÁLIDO");
     } else {
       p.classList.add("cpfInvalido");
       msg = `CPF ${cpf} INVÁLIDO`;
-      console.log("CPF " + cpf + " INVÁLIDO");
     }
     p.innerHTML = msg;
     resultado.appendChild(p);
   }
-});
+
+  function formatoErrado(msgError) {
+    const resultado = document.querySelector("#resultado");
+    resultado.innerHTML = "";
+
+    const p = criarTag();
+    let msg = "Informa somente numeros";
+
+    if (!isNaN(inputCpf.value) && inputCpf.length !== 11) {
+      msg = msgError;
+    }
+    p.classList.add("cpfInvalido");
+    p.innerHTML = msg;
+    resultado.appendChild(p);
+  }
+}
+
+function LimparDisplay() {
+  const input = document.querySelector(".input-display");
+  input.value = "";
+}

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Validar CPF</title>
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
@@ -12,18 +12,20 @@
         <h1>VALIDAR CPF</h1>
         <p>Digite um CPF abaixo para saber se ele é válido</p>
       </div>
-      <form action="/" id="form" method="post">
+      <div class="input-text">
         <input
-          class="display"
+          class="input-display"
           type="text"
           name="cpf"
           id="cpf"
           placeholder="Informe CPF"
         />
-        <button class="button" type="submit">VALIDAR</button>
-      </form>
+        <button onclick="receberValor()" class="button" type="submit">
+          VALIDAR
+        </button>
+      </div>
       <div id="resultado"></div>
     </div>
-    <script src="assets/js/validarCpf.js"></script>
+    <script src="assets/js/cpf.js"></script>
   </body>
 </html>

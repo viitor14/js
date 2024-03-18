@@ -19,17 +19,24 @@ html {
 }
 
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   background-image: url(../img/Design\ sem\ nome.png);
+  background-size: cover;
   color: var(--roxo);
 }
 
 .caixa-texto {
-  margin: 100px auto;
   padding: 30px;
   max-width: 640px;
-  background: var(--branco);
-  border: none;
-  border-radius: 20px;
+  background: transparent;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.281);
+  border-radius: 14px;
+  color: var(--branco);
 }
 
 .texto {
@@ -73,10 +80,16 @@ form {
 input {
   align-self: center;
   height: 30px;
+  background: transparent;
+  color: var(--branco);
   text-align: center;
-  border: 2.2px solid var(--roxo);
+  border: 2px solid var(--roxo);
   border-radius: 10px;
   outline: none;
+}
+
+input::placeholder {
+  color: var(--branco);
 }
 
 button {
